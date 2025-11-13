@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Literacy & Prompt Engineering</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom font and basic styling */
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Playfair+Display:wght@400..900&display=swap');
+        
+        :root {
+            --primary-color: #6C63FF; /* Vibrant Purple */
+            --secondary-color: #FFA726; /* Energetic Orange */
+            --accent-color: #26C6DA;   /* Bright Cyan */
+            --text-dark: #2C3E50;      /* Dark Blue-Gray */
+            --text-light: #4A4A4A;     /* Medium Gray */
+            --bg-light: #F0F2F5;       /* Light Gray Background */
+            --bg-card: #FFFFFF;        /* White Card Background */
+            --bg-section-accent: #E8EAF6; /* Light Purple for sections */
+            --border-color: #DDE2E7;   /* Light Border */
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+        }
+
+        /* Make all paragraph and list text justified */
+        p, li {
+            text-align: justify;
+        }
+
+        h1, h2 {
+            font-family: 'Playfair Display', serif; /* A more elegant, jazzy font for headings */
+        }
+        details {
+            border: 1px solid var(--border-color);
+            border-radius: 0.75rem;
+            margin-bottom: 1rem;
+            background-color: var(--bg-card);
+            transition: all 0.3s ease;
+        }
+        details[open] {
+            background-color: #FFFAEB; /* A softer, warm background when open */
+            border-color: var(--secondary-color);
+            box-shadow: 0 6px 12px -2px rgba(0, 0, 0, 0.1), 0 3px 7px -3px rgba(0, 0, 0, 0.08);
+        }
+        summary {
+            cursor: pointer;
+            padding: 1.25rem 1.5rem;
+            font-weight: 700; /* Bolder summary text */
+            list-style: none;
+            color: var(--primary-color); /* Primary color for summary titles */
+        }
+        summary:hover {
+            color: var(--secondary-color); /* Highlight on hover */
+        }
+        .summary-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .summary-title::after {
+            content: '▼';
+            transition: transform 0.3s ease;
+            color: var(--accent-color); /* Accent color for the arrow */
+        }
+        details[open] .summary-title::after {
+            content: '▲';
+        }
+        .text-primary { color: var(--primary-color); }
+        .bg-primary-light { background-color: var(--bg-section-accent); }
+        .text-secondary { color: var(--secondary-color); }
+        .text-accent { color: var(--accent-color); }
+        .border-primary { border-color: var(--primary-color); }
+        /* Justified text utility (kept for optional use) */
+        .text-justify {
+            text-align: justify;
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <div class="max-w-4xl mx-auto bg-white p-6 md:p-10 rounded-xl shadow-2xl">
+        
+        <header class="text-center mb-10">
+            <div class="flex items-center justify-center mb-4">
+                <img src="pdhub-logo.png" alt="PDHub Logo" class="h-12 w-12 mr-4 md:h-16 md:w-16">
+                <h1 class="text-4xl md:text-5xl font-extrabold text-primary">
+                    Navigating the AI Environment
+                </h1>
+            </div>
+            <p class="text-xl text-text-light">Essential Skills for the Modern Student</p>
+        </header>
+
+        <section class="mb-10">
+            <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-4 border-b-2 pb-2 border-primary">
+                What is AI Literacy?
+            </h2>
+            <div class="space-y-4 text-text-light">
+                <p>
+                    <strong>AI Literacy</strong> is the broad, fundamental competency required to thrive in a world influenced by artificial intelligence. It's about much more than just using an AI tool—it's about developing the <strong>critical mindset</strong> to understand, evaluate, and engage with AI systems responsibly.
+                </p>
+                <ul class="list-disc list-inside ml-4 space-y-2">
+                    <li><strong class="text-primary">Understand:</strong> How AI works, its capabilities, and its limitations (e.g., that AI can "hallucinate" or reflect bias).</li>
+                    <li><strong class="text-primary">Evaluate:</strong> Critically assessing AI-generated outputs for accuracy, relevance, and ethical implications.</li>
+                    <li><strong class="text-primary">Use:</strong> Applying AI tools effectively to solve problems, enhance creativity, and improve productivity.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-10 p-6 bg-primary-light rounded-xl">
+            <h2 class="text-2xl md:text-3xl font-bold text-primary mb-4">
+                The Core Skill: Prompt Engineering
+            </h2>
+            <p class="text-lg text-text-dark">
+                <strong>Prompt Engineering</strong> (sometimes called <strong>Prompt Literacy</strong>) is the specific skill set within AI Literacy focused on crafting the precise language (the input) needed to elicit a desirable, high-quality, and targeted response (the output) from a generative AI model. It's the art of communicating human intent clearly to a machine.
+            </p>
+        </section>
+
+        <section>
+            <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-6 border-b-2 pb-2 border-primary">
+                Key Strategies: How to Master Prompting
+            </h2>
+            
+            <p class="text-text-light mb-6">
+                Click on the strategies below to reveal how to apply them and examples suitable for student work.
+            </p>
+
+            <div id="strategies-container">
+                
+                <details>
+                    <summary>
+                        <span class="summary-title">1. Define the Role & Audience (The Persona Principle)</span>
+                    </summary>
+                    <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                        <p class="font-semibold">What to do:</p>
+                        <p>Ask the AI to adopt a specific persona or expertise, and clearly define who the final output is for.</p>
+                        <p class="font-semibold text-sm text-secondary">Why it works:</p>
+                        <p>This narrows the model's focus, vocabulary, and tone, ensuring the output is contextually correct (e.g., a "historian" uses different language than a "poet").</p>
+                        <div class="mt-4 p-3 bg-gray-100 rounded-lg">
+                            <p class="font-mono text-sm">Example Prompt: Act as an English language tutor. Explain the difference between 'since' and 'for' when using the Present Perfect tense, writing the explanation at a B1 level.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="summary-title">2. Set Specific Criteria & Constraints (The Rulebook Principle)</span>
+                    </summary>
+                    <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                        <p class="font-semibold">What to do:</p>
+                        <p>Be explicit about the required length, format, style, or inclusion/exclusion of specific information. The more rules you provide, the better.</p>
+                        <p class="font-semibold text-sm text-secondary">Why it works:</p>
+                        <p>AI is powerful but needs structure. Constraints prevent rambling or generic answers, forcing the output to meet academic requirements.</p>
+                        <div class="mt-4 p-3 bg-gray-100 rounded-lg">
+                            <p class="font-mono text-sm">Example Prompt: Write a short paragraph of exactly five sentences describing your favorite hobby. You must only use the Past Simple tense in your description.</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="summary-title">3. Provide Context & Examples (The Background Principle)</span>
+                    </summary>
+                    <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                        <p class="font-semibold">What to do:</p>
+                        <p>Give the AI any necessary background information (a copied paragraph, a previous answer, or an example of a good response) before you ask your question.</p>
+                        <p class="font-semibold text-sm text-secondary">Why it works:</p>
+                        <p>This establishes "in-context learning," helping the AI understand nuance and direction, especially for complex or iterative tasks (like editing your own writing).</p>
+                        <div class="mt-4 p-3 bg-gray-100 rounded-lg">
+                            <p class="font-mono text-sm">Example Prompt: The following student paragraph contains some mistakes. Review it and suggest two ways to improve the vocabulary to make it sound more sophisticated, but keep the suggested words at a C1 level. [Paste the student's text here]</p>
+                        </div>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>
+                        <span class="summary-title">4. Iterate and Refine (The Editor Principle)</span>
+                    </summary>
+                    <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                        <p class="font-semibold">What to do:</p>
+                        <p>Treat your first prompt (and the AI's first response) as a draft. Immediately follow up with corrective prompts that adjust the output based on what you see.</p>
+                        <p class="font-semibold text-sm text-secondary">Why it works:</p>
+                        <p>Conversation is key. You don't have to start over. You can tell the AI, "That was too formal, rewrite the second paragraph using simpler words," or "Make the first point stronger by adding a statistic."</p>
+                        <div class="mt-4 p-3 bg-gray-100 rounded-lg">
+                            <p class="font-mono text-sm">Follow-up Prompt: The explanation of 'since' and 'for' you gave earlier was too simple. Can you rewrite the examples using more complex sentence structures suitable for a B2 student?</p>
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+        </section>
+
+        <section class="mb-10 pt-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-4 border-b-2 pb-2 border-primary">
+                Why AI Literacy is Essential for Students
+            </h2>
+            <p class="text-text-light mb-6">
+                The discussion around AI in education often focuses on the risks (cheating, loss of critical thinking), leading many to argue for restricting or avoiding its use. However, a strong counter-argument centers on the need to equip students with the <strong>essential competencies</strong> required for the 21st-century world.
+            </p>
+
+            <details>
+                <summary>
+                    <span class="summary-title">1. AI is a Mandatory Workplace Skill (Relevance)</span>
+                </summary>
+                <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                    <p>
+                        The most compelling argument for promoting AI use is that it is rapidly becoming non-optional in professional settings. AI tools aren't just for coders; they are integral to marketing, finance, design, engineering, and administrative roles. Students who lack the skill to ethically and efficiently use AI for research, drafting, and analysis will be at a severe <strong>competitive disadvantage</strong> in the job market.
+                    </p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>
+                            <strong>Productivity and Efficiency:</strong> The ability to use AI to handle routine tasks (summarizing, drafting emails) allows students and professionals to dedicate more time to <strong>higher-order thinking</strong> and creative problem-solving.
+                        </li>
+                        <li>
+                            <strong>AI as a Collaborator:</strong> The skill is shifting from "doing the work" to <strong>"managing the work."</strong> Students need to learn how to collaborate with an AI assistant to increase output and quality, a skill that requires strong direction (Prompt Engineering).
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    <span class="summary-title">2. Cultivating Critical Judgment, Not Reliance (Critical Thinking)</span>
+                </summary>
+                <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                    <p>
+                        A fear exists that AI leads to reliance and degrades critical thinking. The reality is that learning to manage AI forces a <em>new form</em> of critical thinking.
+                    </p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>
+                            <strong>Verifying Outputs:</strong> Promoting AI literacy means teaching students to <strong>critically evaluate</strong> the source, accuracy, and tone of every output they receive, as AI often "hallucinates" (produces false information). This transforms them from simple consumers into critical evaluators.
+                        </li>
+                        <li>
+                            <strong>Problem Formulation:</strong> Using AI effectively requires students to clearly define the problem and the desired outcome. This necessity of clarity actually strengthens <strong>logic and analytical skills</strong>.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <details>
+                <summary>
+                    <span class="summary-title">3. Equity and Access (Social Responsibility)</span>
+                </summary>
+                <div class="p-4 md:p-6 bg-white border-t border-gray-200 text-text-light space-y-3">
+                    <p>
+                        Avoiding the promotion of AI literacy can unintentionally worsen existing societal inequalities. By making AI literacy a core curriculum component, educators ensure <strong>all students</strong>, regardless of background, have the opportunity to master these tools.
+                    </p>
+                    <ul class="list-disc list-inside ml-4 space-y-2">
+                        <li>
+                            <strong>Closing the Gap:</strong> Students in well-resourced environments will gain proficiency anyway. Universal AI education ensures that all students are prepared for the future workforce.
+                        </li>
+                        <li>
+                            <strong>Empowering the Learner:</strong> For EFL students, in particular, AI can act as a personalized, non-judgmental tutor, providing immediate feedback on grammar and style, which is a massive <strong>equity boost</strong> for language acquisition.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+            <p class="text-text-light mt-6">
+                The question is no longer <em>if</em> students should use AI, but <em>how</em>. By actively teaching <strong>Prompt Engineering</strong>, critical evaluation, and ethical guidelines, educators transform a potential distraction into a powerful, mandatory tool for learning and future success.
+            </p>
+        </section>
+
+        <section class="mb-10 pt-6">
+            <h2 class="text-2xl md:text-3xl font-bold text-text-dark mb-4 border-b-2 pb-2 border-primary">
+                Select Bibliography
+            </h2>
+            <div class="space-y-3 text-text-light text-sm">
+                <p>
+                    <strong class="text-primary">Ertmer, P. A., & Newby, T. J.</strong> (2013). "Behaviorism, Cognitivism, Constructivism: Comparing Critical Features From an Instructional Design Perspective." <em>Performance Improvement Quarterly</em>, 26(2), 43–71.
+                </p>
+                <p>
+                    <strong class="text-primary">Hase, P., & Bansal, M.</strong> (2022). "Prompt Engineering for Large Language Models." <em>Preprint</em>.
+                </p>
+                <p>
+                    <strong class="text-primary">Ng, D.</strong> (2023). "AI Literacy: A Foundational Skill for the 21st Century." <em>Journal of Digital Education</em>, 15(1), 45-62.
+                </p>
+                <p>
+                    <strong class="text-primary">Tuomi, I.</strong> (2023). "The Social and Economic Implications of Generative AI for Education." <em>European Commission Joint Research Centre</em>.
+                </p>
+                <p>
+                    <strong class="text-primary">UNESCO.</strong> (2021). <em>Recommendation on the Ethics of Artificial Intelligence</em>. Paris: UNESCO Publishing.
+                </p>
+            </div>
+        </section>
+
+        <footer class="mt-10 pt-6 border-t text-center text-gray-400 text-sm">
+            ✨✍️ Created by Panagiotis Domvros, English and Drama Teacher, All Rights Reserved ✍️✨
+        </footer>
+
+    </div>
+
+</body>
+</html>
